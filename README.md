@@ -103,7 +103,7 @@ Follow these steps to get started with developing an investment strategy using t
 Make sure you have `sklearn` installed to follow this example:
 
 ```shell
-pip install sklearn
+$ pip install sklearn
 ```
 
 ### Steps to Get Started
