@@ -118,21 +118,23 @@ $ pip install sklearn
 
 In this example, we create a simple `sklearn` pipeline with a processor and a regressor.
 
-Import Required Modules
+#### Import Required Modules
 
 ```python
 >>> from statespace.base import BaseStudy, Listed
 >>> from statespace.decorators import run_study
 ```
 
-Define the Strategy Function
+#### Define the Strategy Function
 
 ```python
 >>> def strategy(estimator: BaseEstimator, preprocessor: BaseEstimator) -> Pipeline:
 ...     return make_pipeline(preprocessor, estimator)
 ```
 
-Create a Custom Objective Function: We then create a custom objective `MyCustomObjective` to minimize the mean squared error on the validation set.
+#### Create a Custom Objective Function
+
+We then create a custom objective `MyCustomObjective` to minimize the mean squared error on the validation set:
 
 ```python 
 >>> class MyCustomObjective(BaseStudy):
@@ -146,7 +148,7 @@ Create a Custom Objective Function: We then create a custom objective `MyCustomO
 ...         return mean_squared_error(y_test, pred)
 ```
 
-Set Up a Configuration File with Hyperparameters
+#### Set Up a Configuration File with Hyperparameters
 
 ```python
 >>> config = {
@@ -155,13 +157,15 @@ Set Up a Configuration File with Hyperparameters
 ... }
 ```
 
-Execute the Trials
+#### Execute the Trials
 
 ```python
 >>> custom_model = MyCustomObjective(config, strategy, X, y, direction="minimize")
 >>> model = custom_model.execute(n_trials=5)
 # A new study created in memory with name: statespace
 ```
+
+#### Analyze Results
 
 Get best parameters
 
@@ -177,7 +181,7 @@ Get best value
 # 0.9758159549070534
 ```
 
-Visualize results
+#### Visualize
 
 ```python
 >>> from optuna import visualization
