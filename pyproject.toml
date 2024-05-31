@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "statespace"
+version = "0.1.0"
+description = "Enhance your portfolio construction process using advanced Optuna fine-tuning techniques."
+authors = ["ActurialCapital"]
+license = "BSD 3-Clause License"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+optuna = "^3.6.1"
+numpy = "^1.26.4"
+pandas = "^2.2.2"
+plotly = "^5.22.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
