@@ -116,7 +116,7 @@ pip install sklearn
 
 ### Example
 
-In this example, we create a simple sklearn pipeline with a processor and a regressor.
+In this example, we create a simple `sklearn` pipeline with a processor and a regressor.
 
 Import Required Modules
 
