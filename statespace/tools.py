@@ -96,4 +96,4 @@ class Nested:
     aggregate: bool = False
 
     def __repr__(self):
-        return f"Listed(params={self.params}, aggregate={self.aggregate})"
+        return f"Nested(params={self.params}, aggregate={self.aggregate})"
