@@ -103,7 +103,7 @@ Follow these steps to get started with developing an investment strategy using t
 Make sure you have `sklearn` installed to follow this example:
 
 ```shell
-$ pip install sklearn
+$ pip install scikit-learn
 ```
 
 ### Steps to Get Started
@@ -124,6 +124,8 @@ In this example, we create a simple `sklearn` pipeline with a processor and a re
 >>> from statespace.base import BaseStudy, Listed
 >>> from statespace.decorators import run_study
 ```
+
+Note: `sklearn` imports are not shown here. Please see our running examples in the examples folder for more details.
 
 #### Define the Strategy Function
 
