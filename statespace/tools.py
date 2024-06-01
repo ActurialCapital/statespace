@@ -23,7 +23,8 @@ class Listed:
     With `sklearn` estimators
     ```pycon
     >>> from sklearn.linear_model import LinearRegression, Ridge
-    >>> Typed([LinearRegression(), Ridge()])
+    >>> from statespace.tools import Listes
+    >>> Listed([LinearRegression(), Ridge()])
     ```
     """
     params: list
@@ -62,27 +63,31 @@ class Nested:
     --------
     ```pycon
     >>> from optuna.distributions import IntDistribution
+    >>> from statespace.tools import Nested
     ```
 
     With splitter
     ```pycon
-    >>> study.Nested({
+    >>> from opendesk import Splitter
+    >>> Nested({
     ...     Splitter: {
     ...         'n_train': IntDistribution(1, 10), 
     ...         'n_test': 1
     ...     }
     ... }
     ```
-
+    
     With preprocessors
     ```pycon
-    >>> study.Nested({
+    >>> from opendesk import Factors
+    >>> Nested({
     ...     Factors: {'shift_by': IntDistribution(1, 4)}
     ... }
     ```
 
     With transformers
     ```pycon
+    >>> from opendesk import QuantileRanks, Signal
     >>> study.Nested({
     ...     QuantileRanks: {'number_q': IntDistribution(2, 5)},
     ...     Signal: {'higher_is_better': True}
