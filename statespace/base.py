@@ -52,7 +52,8 @@ class BaseOptunaHandler(ABC):
             The suggested parameter value.
         """
         if isinstance(distribution, list):
-            suggested = self.trial.suggest_categorical(name, distribution)
+            suggested = self.trial.suggest_categorical(
+                name, distribution)
 
         elif isinstance(distribution, IntDistribution):
             suggested = self.trial.suggest_int(
@@ -227,7 +228,7 @@ class BaseStudy(ABC):
     Methods
     -------
     create
-        Creates a DataFrame based on the trial components and additional 
+        Creates strategy based on the trial components and additional 
         configuration.
     execute
         Executes the optimization study over a specified number of trials.
@@ -445,14 +446,14 @@ class BaseStudy(ABC):
         >>> from optuna.trial import Trial
         >>> 
         >>> class MyCustomObjective(BaseStudy):
-        ...     def __init__(self, custom_parameter):
-        ...         self.custom_parameter = custom_parameter
+        ...     def __init__(self, **custom_params):
+        ...         super.__init__(**custom_params)
         ...       
         ...     @run_study
         ...     def objective(self, trial: Trial) -> float:
-        ...         return self.summary.some_metrics
+        ...         return self.model.some_metrics
         >>> 
-        >>> custom_objective = MyCustomObjective(custom_parameter)
+        >>> custom_objective = MyCustomObjective(custom_params)
         >>> custom_objective.execute(n_trials=100)
         <Study.Study at 0x17427b990>
         ```
