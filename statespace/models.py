@@ -44,17 +44,6 @@ class Performance(BaseStudy):
 
     """
 
-    def __init__(
-        self,
-        config: ConfigStudy,
-        strategy: Callable,
-        *data,
-        model_kwargs: ModelKwargs = None,
-        **create_study_kwargs
-    ):
-        super().__init__(config, strategy, *data, **create_study_kwargs)
-        self.model_kwargs = model_kwargs or {}
-
     @run_study
     def objective(self, trial: Trial):
         """
@@ -65,7 +54,31 @@ class Performance(BaseStudy):
         float
             The performance metric of the evaluated trial.
         """
-        return self.summary.performance(**self.model_kwargs).iloc[-1, 0]
+        return self.model.performance(**self.model_kwargs)
+
+
+class Sharpe(BaseStudy):
+    @run_study
+    def objective(self, trial: Trial):
+        raise NotImplementedError
+    
+    
+class Sortino(BaseStudy):
+    @run_study
+    def objective(self, trial: Trial):
+        raise NotImplementedError    
+
+
+class Alpha(BaseStudy):
+    @run_study
+    def objective(self, trial: Trial):
+        raise NotImplementedError
+    
+    
+class Beta(BaseStudy):
+    @run_study
+    def objective(self, trial: Trial):
+        raise NotImplementedError
 
 
 # Other objectives can be developed here
