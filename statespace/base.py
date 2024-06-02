@@ -331,7 +331,6 @@ class BaseStudy(ABC):
     ```
     """
 
-    @abstractmethod
     def __init__(
         self,
         config: Dict[str, Listed | Nested | str | float | int | None],
