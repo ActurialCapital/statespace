@@ -6,9 +6,7 @@ import pandas as pd
 from optuna import create_study
 from optuna.trial import Trial
 from optuna.study import Study
-from optuna.distributions import BaseDistribution
-from optuna.distributions import IntDistribution
-from optuna.distributions import CategoricalDistribution
+from optuna.distributions import BaseDistribution, IntDistribution, CategoricalDistribution
 
 from statespace.tools import Listed, Nested
 
