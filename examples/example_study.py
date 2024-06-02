@@ -71,25 +71,23 @@ if __name__ == "__main__":
     model = custom_model.execute(n_trials=20)
     # A new study created in memory with name: statespace
 
-
     # Get best parameters
 
     print(model.best_trial.params)
     # {'preprocessor': StandardScaler(), 'estimator': LinearRegression()}
-
 
     # Get best value
 
     print(model.best_value)
     # 1.3722278355576882
 
-
     # Visulatize the output
 
     from optuna import visualization
-    
+
     # Plot contour
-    fig = visualization.plot_contour(model, params=["estimator", "preprocessor"])
+    fig = visualization.plot_contour(
+        model, params=["estimator", "preprocessor"])
     fig.show(renderer='svg')
     fig.write_image("../docs/static/example_contour_plot.png")
 
@@ -97,3 +95,18 @@ if __name__ == "__main__":
     fig = visualization.plot_param_importances(model)
     fig.show(renderer='svg')
     fig.write_image("../docs/static/example_importance_plot.png")
+
+    # Plot EDF
+    fig = visualization.plot_edf(model)
+    fig.show(renderer='svg')
+    fig.write_image("../docs/static/example_edf_plot.png")
+
+    # Plot optimization history
+    fig = visualization.plot_optimization_history(model)
+    fig.show(renderer='svg')
+    fig.write_image("../docs/static/example_edf_plot.png")
+
+    # Plot high-dimensional parameter relationships
+    fig = visualization.plot_parallel_coordinate(model)
+    fig.show(renderer='svg')
+    fig.write_image("../docs/static/example_edf_plot.png")
