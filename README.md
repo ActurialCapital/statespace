@@ -140,9 +140,6 @@ We then create a custom objective `MyCustomObjective` to minimize the mean squar
 
 ```python 
 >>> class MyCustomObjective(BaseStudy):
-...     def __init__(self, config, strategy, *data, **create_study_kwargs):
-...         super().__init__(config, strategy, *data, **create_study_kwargs)
-...  
 ...     @run_study
 ...     def objective(self, trial: Trial) -> float:
 ...         X_train, X_test, y_train, y_test = train_test_split(*self.data, test_size=0.33)
