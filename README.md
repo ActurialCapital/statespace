@@ -109,10 +109,11 @@ $ pip install scikit-learn
 ### Steps to Get Started
 
 * Develop an Investment Strategy
-* Create a Custom Objective Function
+* Create a Custom Objective Object
 * Set Up a Configuration File with Hyperparameters
 * Execute the Trials
 * Analyze the Results
+* Visualize
 
 ### Example
 
@@ -127,14 +128,14 @@ In this example, we create a simple `sklearn` pipeline with a processor and a re
 
 Note: `sklearn` imports are not shown here. Please see our running examples in the examples folder for more details.
 
-#### Define the Strategy Function
+#### Develop an Investment Strategy
 
 ```python
 >>> def strategy(estimator: BaseEstimator, preprocessor: BaseEstimator) -> Pipeline:
 ...     return make_pipeline(preprocessor, estimator)
 ```
 
-#### Create a Custom Objective Function
+#### Create a Custom Objective Object
 
 We then create a custom objective `MyCustomObjective` to minimize the mean squared error on the validation set:
 
@@ -159,8 +160,8 @@ We then create a custom objective `MyCustomObjective` to minimize the mean squar
 #### Execute the Trials
 
 ```python
->>> custom_model = MyCustomObjective(config, strategy, X, y, direction="minimize")
->>> model = custom_model.execute(n_trials=5)
+>>> custom_model = MyCustomObjective(config, strategy, X, y)
+>>> model = custom_model.execute(n_trials=20)
 # A new study created in memory with name: statespace
 ```
 
