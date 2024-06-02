@@ -20,9 +20,6 @@ from statespace.decorators import run_study
 
 
 class MyCustomObjective(BaseStudy):
-    def __init__(self, config, strategy, *data, **create_study_kwargs):
-        super().__init__(config, strategy, *data, **create_study_kwargs)
-
     @run_study
     def objective(self, trial: Trial) -> float:
         # Split data
@@ -71,7 +68,7 @@ if __name__ == "__main__":
 
     # Run study
 
-    model = custom_model.execute(n_trials=5)
+    model = custom_model.execute(n_trials=20)
     # A new study created in memory with name: statespace
 
 
@@ -90,7 +87,13 @@ if __name__ == "__main__":
     # Visulatize the output
 
     from optuna import visualization
-    fig = visualization.plot_contour(
-        model, params=["estimator", "preprocessor"])
+    
+    # Plot contour
+    fig = visualization.plot_contour(model, params=["estimator", "preprocessor"])
     fig.show(renderer='svg')
     fig.write_image("../docs/static/example_contour_plot.png")
+
+    # Plot importance
+    fig = visualization.plot_param_importances(model)
+    fig.show(renderer='svg')
+    fig.write_image("../docs/static/example_importance_plot.png")

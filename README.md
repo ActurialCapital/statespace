@@ -170,26 +170,36 @@ Get best parameters
 
 ```python
 >>> print(model.best_trial.params)
-# {'preprocessor': MinMaxScaler(), 'estimator': Lasso()}
+# {'preprocessor': MinMaxScaler(), 'estimator': ElasticNet()}
 ```
 
 Get best value
 
 ```python
 >>> print(model.best_value)
-# 0.9758159549070534
+# 0.9758159549070534.
 ```
 
 #### Visualize
 
 ```python
 >>> from optuna import visualization
+```
+
+Contour Plot
+
+```python
 >>> fig = visualization.plot_contour(model, params=["estimator", "preprocessor"])
 >>> fig.show()
 ```
+<p align="center"><img src="docs/static/example_contour_plot.png" alt="chart-1""></p>
 
-<p align="center"><img src="docs/static/example_contour_plot.png" alt="chart-2""></p>
-
+Hyperparameter Importance
+```python
+>>> fig = visualization.plot_param_importances(model)
+>>> fig.show()
+```
+<p align="center"><img src="docs/static/example_importance_plot.png" alt="chart-2""></p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -222,12 +232,3 @@ Distributed under the BSD-3 License. See `LICENSE.txt` for more information.
 
 * Takuya Akiba, Shotaro Sano, Toshihiko Yanase, Takeru Ohta, and Masanori Koyama. 2019.
 * Optuna: A Next-generation Hyperparameter Optimization Framework. In KDD.
-
-```bibtex
-@inproceedings{optuna_2019,
-    title={Optuna: A Next-generation Hyperparameter Optimization Framework},
-    author={Akiba, Takuya and Sano, Shotaro and Yanase, Toshihiko and Ohta, Takeru and Koyama, Masanori},
-    booktitle={Proceedings of the 25th {ACM} {SIGKDD} International Conference on Knowledge Discovery and Data Mining},
-    year={2019}
-}
-```

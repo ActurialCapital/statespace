@@ -61,20 +61,20 @@ class Sharpe(BaseStudy):
     @run_study
     def objective(self, trial: Trial):
         raise NotImplementedError
-    
-    
+
+
 class Sortino(BaseStudy):
     @run_study
     def objective(self, trial: Trial):
-        raise NotImplementedError    
+        raise NotImplementedError
 
 
 class Alpha(BaseStudy):
     @run_study
     def objective(self, trial: Trial):
         raise NotImplementedError
-    
-    
+
+
 class Beta(BaseStudy):
     @run_study
     def objective(self, trial: Trial):
