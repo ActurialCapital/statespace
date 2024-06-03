@@ -1,4 +1,4 @@
-from typing import Dict, Any, Callable
+from typing import Dict, Any
 from optuna.trial import Trial
 
 from statespace.base import BaseStudy
@@ -40,7 +40,8 @@ class Performance(BaseStudy):
         * `load_if_exists`: (`bool`)
         * `directions`: (`Sequence[str | StudyDirection] | None`) 
 
-        More information could be found in the [optuna documentation](https://optuna.readthedocs.io/en/).
+        More information could be found in the 
+        [Optuna Documentation](https://optuna.readthedocs.io/en/).
 
     """
 
@@ -54,7 +55,7 @@ class Performance(BaseStudy):
         float
             The performance metric of the evaluated trial.
         """
-        return self.model.performance(**self.model_kwargs)
+        raise NotImplementedError
 
 
 class Sharpe(BaseStudy):

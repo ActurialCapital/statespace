@@ -238,8 +238,13 @@ class BaseStudy(ABC):
     Examples
     --------
     ```pycon
-    >>> from sklearn.linear_model import LinearRegression, Ridge, Lasso, ElasticNet
     >>> from optuna.distributions import IntDistribution
+    >>> from sklearn.linear_model import LinearRegression, Ridge, Lasso, ElasticNet
+    >>> from sklego.meta import EstimatorTransformer
+    >>> from opendesk.transformers import QuantileRanks, Signal
+    >>> from opendesk.portfolio import EqualWeighted, MarketCapWeighted
+    >>> from opendesk.splitter import Splitter
+    >>> from opendesk.strategy import strategy
     >>> from statespace import Listed, Nested, Performance
     ```
 
@@ -258,7 +263,7 @@ class BaseStudy(ABC):
     ...     'expected_returns': 'ema_historical_return', # (4)
     ...     'allocators': Listed([EqualWeighted(), MarketCapWeighted(mcaps)]),
     ...     'splitter': Nested({
-    ...         SplitterFromCalendarYears: {
+    ...         Splitter: {
     ...             'n_train': IntDistribution(1, 10),
     ...             'n_test': 1 # (5)
     ...         }
@@ -274,7 +279,7 @@ class BaseStudy(ABC):
 
     Create a study
     ```pycon
-    >>> perf = Performance(config, X, y, direction="maximize")
+    >>> perf = Performance(config, strategy, X, y, direction="maximize")
     >>> model = perf.execute(n_trials=5)
     [I 2024-04-04 10:31:17,861] A new study created in memory...
     [I 2024-04-04 10:31:28,011] Trial 0 finished with value: 0.81...
@@ -443,9 +448,6 @@ class BaseStudy(ABC):
         >>> from optuna.trial import Trial
         >>> 
         >>> class MyCustomObjective(BaseStudy):
-        ...     def __init__(self, **custom_params):
-        ...         super.__init__(**custom_params)
-        ...       
         ...     @run_study
         ...     def objective(self, trial: Trial) -> float:
         ...         return self.model.some_metrics

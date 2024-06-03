@@ -4,13 +4,13 @@ from statespace.base import BaseStudy
 from statespace.decorators import run_study
 
 
-class TemplateObjective(BaseStudy):
+class Template(BaseStudy):
     @run_study
     def objective(self, trial: Trial) -> float:
-        return np.random.normal()
+        return np.random.rand()
 
 
-def template_strategy() -> None:
+def strategy() -> None:
     return
 
 
@@ -19,7 +19,7 @@ if __name__ == "__main__":
     config = {}
 
     # Initialize Template objective
-    template_objective = TemplateObjective(config, template_strategy)
+    template_objective = Template(config, strategy)
 
     # Execute
     template_objective.execute(n_trials=100)

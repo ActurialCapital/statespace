@@ -1,0 +1,1 @@
+from .templates import *from .models import Tabular__all__ = ["Tabular"]
