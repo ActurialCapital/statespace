@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 <!-- PROJECT LOGO -->
-# StateSpace
+<p align="center"><img src="docs/static/logo.png" alt="logo" width="80%" height="80%"></p>
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -27,8 +27,6 @@
     
   </ol>
 </details>
-
-
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
