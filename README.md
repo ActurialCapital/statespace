@@ -83,10 +83,8 @@ More information could be found in the [Official Documentation](https://optuna.r
 <!-- GETTING STARTED -->
 ## Installation
 
-To get started with `statespace`, you can clone the repository to your local machine. Ensure you have Git installed, then run the following command:
-
 ```sh
-$ git clone https://github.com/ActurialCapital/statespace.git
+$ pip install python-statespace
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
